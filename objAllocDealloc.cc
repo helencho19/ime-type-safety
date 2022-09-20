@@ -90,66 +90,6 @@ int getInt() {
 //         pop     rbp
 //         ret
 
-// Strings, vectors
-
-// String on the stack
-void declareString() {
-    std::string s;
-}
-// declareString():
-//         push    rbp
-//         mov     rbp, rsp
-//         sub     rsp, 32
-//         lea     rax, [rbp-32]
-//         mov     rdi, rax
-//         call    std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string() [complete object constructor]
-//         lea     rax, [rbp-32]
-//         mov     rdi, rax
-//         call    std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::~basic_string() [complete object destructor]
-//         leave
-//         ret
-
-// String on the stack
-void makeHelloWorldString() {
-    std::string s = "hello world";
-}
-// -O1 optimization just returns; maybe that's too much optimization...
-// .LC0:
-//         .string "hello world"
-// makeHelloWorldString():
-//         push    rbp
-//         mov     rbp, rsp
-//         push    rbx
-//         sub     rsp, 56
-//         lea     rax, [rbp-17]
-//         mov     rdi, rax
-//         call    std::allocator<char>::allocator() [complete object constructor]
-//         lea     rdx, [rbp-17]
-//         lea     rax, [rbp-64]
-//         mov     esi, OFFSET FLAT:.LC0
-//         mov     rdi, rax
-//         call    std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string<std::allocator<char> >(char const*, std::allocator<char> const&)
-//         lea     rax, [rbp-17]
-//         mov     rdi, rax
-//         call    std::allocator<char>::~allocator() [complete object destructor]
-//         lea     rax, [rbp-64]
-//         mov     rdi, rax
-//         call    std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::~basic_string() [complete object destructor]
-//         jmp     .L9
-//         mov     rbx, rax
-//         lea     rax, [rbp-17]
-//         mov     rdi, rax
-//         call    std::allocator<char>::~allocator() [complete object destructor]
-//         mov     rax, rbx
-//         mov     rdi, rax
-//         call    _Unwind_Resume
-// .L9:
-//         mov     rbx, QWORD PTR [rbp-8]
-//         leave
-//         ret
-// .LC1:
-//         .string "basic_string: construction from null is not valid"
-
 char getChar() {
     char a = 'a';
     return a;
@@ -162,71 +102,23 @@ char getChar() {
 //         pop     rbp
 //         ret
 
-void makeVector() {
-    std::vector<int> v;
+// Float on the stack
+float getFloat() {
+    float f = 1.0;
+    return f;
 }
-// makeVector():
+// getFloat():
 //         push    rbp
 //         mov     rbp, rsp
-//         sub     rsp, 32
-//         lea     rax, [rbp-32]
-//         mov     rdi, rax
-//         call    std::vector<int, std::allocator<int> >::vector() [complete object constructor]
-//         lea     rax, [rbp-32]
-//         mov     rdi, rax
-//         call    std::vector<int, std::allocator<int> >::~vector() [complete object destructor]
-//         leave
-//         ret
-
-void addVectorElt() {
-    std::vector<int> v;
-    v.push_back(91);
-}
-// -O1 optimization
-// addVectorElt():
-//         sub     rsp, 8
-//         mov     edi, 4
-//         call    operator new(unsigned long)
-//         mov     rdi, rax
-//         mov     DWORD PTR [rax], 91
-//         mov     esi, 4
-//         call    operator delete(void*, unsigned long)
-//         add     rsp, 8
-//         ret
-
-// No optimization
-// addVectorElt():
-//         push    rbp
-//         mov     rbp, rsp
-//         push    rbx
-//         sub     rsp, 40
-//         lea     rax, [rbp-48]
-//         mov     rdi, rax
-//         call    std::vector<int, std::allocator<int> >::vector() [complete object constructor]
-//         mov     DWORD PTR [rbp-20], 91
-//         lea     rdx, [rbp-20]
-//         lea     rax, [rbp-48]
-//         mov     rsi, rdx
-//         mov     rdi, rax
-//         call    std::vector<int, std::allocator<int> >::push_back(int&&)
-//         lea     rax, [rbp-48]
-//         mov     rdi, rax
-//         call    std::vector<int, std::allocator<int> >::~vector() [complete object destructor]
-//         jmp     .L9
-//         mov     rbx, rax
-//         lea     rax, [rbp-48]
-//         mov     rdi, rax
-//         call    std::vector<int, std::allocator<int> >::~vector() [complete object destructor]
-//         mov     rax, rbx
-//         mov     rdi, rax
-//         call    _Unwind_Resume
-// .L9:
-//         mov     rbx, QWORD PTR [rbp-8]
-//         leave
+//         movss   xmm0, DWORD PTR .LC0[rip]
+//         movss   DWORD PTR [rbp-4], xmm0
+//         movss   xmm0, DWORD PTR [rbp-4]
+//         pop     rbp
 //         ret
 // .LC0:
-//         .string "vector::_M_realloc_insert"
+//         .long   1065353216
 
+/////////////////// ARRAYS ///////////////////
 void makeIntArrayNoFill() {
     int arr[3];
 }
@@ -239,12 +131,12 @@ void makeIntArrayNoFill() {
 
 void makeIntArrayPartialFill() {
     int arr[3];
-    arr[0] = 1;
+    arr[1] = 1;
 }
 // makeIntArrayPartialFill():
 //         push    rbp
 //         mov     rbp, rsp
-//         mov     DWORD PTR [rbp-12], 1
+//         mov     DWORD PTR [rbp-8], 1
 //         nop
 //         pop     rbp
 //         ret
@@ -314,6 +206,131 @@ void makeFloatArray() {
 //         .long   1065353216
 // .LC1:
 //         .long   1069547520
+
+// Strings, vectors
+
+// String on the stack
+void declareString() {
+    std::string s;
+}
+// declareString():
+//         push    rbp
+//         mov     rbp, rsp
+//         sub     rsp, 32
+//         lea     rax, [rbp-32]
+//         mov     rdi, rax
+//         call    std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string() [complete object constructor]
+//         lea     rax, [rbp-32]
+//         mov     rdi, rax
+//         call    std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::~basic_string() [complete object destructor]
+//         leave
+//         ret
+
+// String on the stack
+void makeHelloWorldString() {
+    std::string s = "hello world";
+}
+// -O1 optimization just returns; maybe that's too much optimization...
+// .LC0:
+//         .string "hello world"
+// makeHelloWorldString():
+//         push    rbp
+//         mov     rbp, rsp
+//         push    rbx
+//         sub     rsp, 56
+//         lea     rax, [rbp-17]
+//         mov     rdi, rax
+//         call    std::allocator<char>::allocator() [complete object constructor]
+//         lea     rdx, [rbp-17]
+//         lea     rax, [rbp-64]
+//         mov     esi, OFFSET FLAT:.LC0
+//         mov     rdi, rax
+//         call    std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string<std::allocator<char> >(char const*, std::allocator<char> const&)
+//         lea     rax, [rbp-17]
+//         mov     rdi, rax
+//         call    std::allocator<char>::~allocator() [complete object destructor]
+//         lea     rax, [rbp-64]
+//         mov     rdi, rax
+//         call    std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::~basic_string() [complete object destructor]
+//         jmp     .L9
+//         mov     rbx, rax
+//         lea     rax, [rbp-17]
+//         mov     rdi, rax
+//         call    std::allocator<char>::~allocator() [complete object destructor]
+//         mov     rax, rbx
+//         mov     rdi, rax
+//         call    _Unwind_Resume
+// .L9:
+//         mov     rbx, QWORD PTR [rbp-8]
+//         leave
+//         ret
+// .LC1:
+//         .string "basic_string: construction from null is not valid"
+
+void makeVector() {
+    std::vector<int> v;
+}
+// makeVector():
+//         push    rbp
+//         mov     rbp, rsp
+//         sub     rsp, 32
+//         lea     rax, [rbp-32]
+//         mov     rdi, rax
+//         call    std::vector<int, std::allocator<int> >::vector() [complete object constructor]
+//         lea     rax, [rbp-32]
+//         mov     rdi, rax
+//         call    std::vector<int, std::allocator<int> >::~vector() [complete object destructor]
+//         leave
+//         ret
+
+void addVectorElt() {
+    std::vector<int> v;
+    v.push_back(91);
+}
+// -O1 optimization
+// addVectorElt():
+//         sub     rsp, 8
+//         mov     edi, 4
+//         call    operator new(unsigned long)
+//         mov     rdi, rax
+//         mov     DWORD PTR [rax], 91
+//         mov     esi, 4
+//         call    operator delete(void*, unsigned long)
+//         add     rsp, 8
+//         ret
+
+// No optimization
+// addVectorElt():
+//         push    rbp
+//         mov     rbp, rsp
+//         push    rbx
+//         sub     rsp, 40
+//         lea     rax, [rbp-48]
+//         mov     rdi, rax
+//         call    std::vector<int, std::allocator<int> >::vector() [complete object constructor]
+//         mov     DWORD PTR [rbp-20], 91
+//         lea     rdx, [rbp-20]
+//         lea     rax, [rbp-48]
+//         mov     rsi, rdx
+//         mov     rdi, rax
+//         call    std::vector<int, std::allocator<int> >::push_back(int&&)
+//         lea     rax, [rbp-48]
+//         mov     rdi, rax
+//         call    std::vector<int, std::allocator<int> >::~vector() [complete object destructor]
+//         jmp     .L9
+//         mov     rbx, rax
+//         lea     rax, [rbp-48]
+//         mov     rdi, rax
+//         call    std::vector<int, std::allocator<int> >::~vector() [complete object destructor]
+//         mov     rax, rbx
+//         mov     rdi, rax
+//         call    _Unwind_Resume
+// .L9:
+//         mov     rbx, QWORD PTR [rbp-8]
+//         leave
+//         ret
+// .LC0:
+//         .string "vector::_M_realloc_insert"
 
 struct A {
     char c;
