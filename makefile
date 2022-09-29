@@ -9,7 +9,7 @@ CPPFLAGS  = -std=c++11 -Wall -Werror
 
 # Set up additional flags for explicitly setting mode
 # https://stackoverflow.com/questions/9262456/how-do-i-disable-gcc-optimization-when-using-makefiles
-debug:	CPPFLAGS += -g -S -fverbose-asm -O0
+debug:	CPPFLAGS += -g -O0
 
 # The build target 
 # TARGET = myprogram
