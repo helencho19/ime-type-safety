@@ -5,7 +5,11 @@ CC = g++
 # compiler flags:
 #  -g     - this flag adds debugging information to the executable file
 #  -Wall  - this flag is used to turn on most compiler warnings
-CFLAGS  = -std=c++11 -g -Wall -Werror
+CPPFLAGS  = -std=c++11 -Wall -Werror
+
+# Set up additional flags for explicitly setting mode
+# https://stackoverflow.com/questions/9262456/how-do-i-disable-gcc-optimization-when-using-makefiles
+debug:	CPPFLAGS += -g -S -fverbose-asm -O0
 
 # The build target 
 # TARGET = myprogram
@@ -14,8 +18,10 @@ CFLAGS  = -std=c++11 -g -Wall -Werror
 
 # $(TARGET): $(TARGET).c
 #             $(CC) $(CFLAGS) -o $(TARGET) $(TARGET).c
-node: node.cc 
-	$(CC) $(CFLAGS) -o node node.cc 
+debug: $(TARGET).cc 
+	$(CC) $(CPPFLAGS) -o $(TARGET) $(TARGET).cc
+# node: node.cc 
+# 	$(CC) $(CPPFLAGS) -o node node.cc 
 
 clean:
 	$(RM) $(TARGET)
