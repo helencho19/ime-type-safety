@@ -1,35 +1,24 @@
-class Node {
-    int val_;
-    Node* next_;
+#include "node.h"
 
-    public:
-        Node() {
-            val_ = 0;
-            next_ = nullptr;
-        }
-
-        ~Node(){}
-
-        void setVal(int val) {
-            val_ = val;
-        }
-
-        void setNext(Node* next) {
-            next_ = next;
-        }
-
-        int getVal() {
-            return val_;
-        }
-
-        Node* getNext() {
-            return next_;
-        }
+Node::Node() {
+    val_ = 0;
+    next_ = nullptr;
 };
 
-int main() {
-    // Create using new/delete, but also create things on the stack
-    Node* n = new Node;
-    n->setVal(5);
-    delete n;
-}
+Node::~Node(){};
+
+void Node::setVal(int val) {
+    val_ = val;
+};
+
+void Node::setNext(Node* next) {
+    next_ = next;
+};
+
+int Node::getVal() {
+    return val_;
+};
+
+Node* Node::getNext() {
+    return next_;
+};
