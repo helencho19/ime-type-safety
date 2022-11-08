@@ -22,16 +22,14 @@ def parse_args():
 
 def main(args):
     f = open(args.filename, "w")
+    # Need to source this file in gdb, like "source print_reg_state.py"
 
-    # Start at the main method (or the first breakpoint)
+    # Start at the main method (or the first breakpoint) set in .gdbinit
+    gdb.execute("r", True, False)
 
     # Run the program step by step until it is done
     #   at each step, print register state using "info registers general"
     #   redirect output to python string and then print that out to a log file?
-
-
-    gdb.execute("r", True, False)
-
     # Thread is valid if it has not yet exited or if the inferior has not been deleted
     while not gdb.selected_inferior().threads()[0].is_exited():
         register_state = gdb.execute("info registers general", True, True)
