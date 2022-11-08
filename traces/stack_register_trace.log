@@ -1,0 +1,175 @@
+rax            0x555555555189      93824992235913
+rbx            0x5555555553a0      93824992236448
+rcx            0xe0                224
+rdx            0x7fffffffe0d8      140737488347352
+rsi            0x7fffffffe0c8      140737488347336
+rdi            0x1                 1
+rbp            0x0                 0x0
+rsp            0x7fffffffdfd8      0x7fffffffdfd8
+r8             0x0                 0
+r9             0x7ffff7fe0d50      140737354009936
+r10            0x7ffff7db3be0      140737351728096
+r11            0x7ffff7db3be0      140737351728096
+r12            0x5555555550a0      93824992235680
+r13            0x7fffffffe0c0      140737488347328
+r14            0x0                 0
+r15            0x0                 0
+rip            0x555555555189      0x555555555189 <main()>
+eflags         0x246               [ PF ZF IF ]
+cs             0x33                51
+ss             0x2b                43
+ds             0x0                 0
+es             0x0                 0
+fs             0x0                 0
+gs             0x0                 0
+
+rax            0x555555555189      93824992235913
+rbx            0x5555555553a0      93824992236448
+rcx            0xe0                224
+rdx            0x7fffffffe0d8      140737488347352
+rsi            0x7fffffffe0c8      140737488347336
+rdi            0x1                 1
+rbp            0x7fffffffdfd0      0x7fffffffdfd0
+rsp            0x7fffffffdfb0      0x7fffffffdfb0
+r8             0x0                 0
+r9             0x7ffff7fe0d50      140737354009936
+r10            0x7ffff7db3be0      140737351728096
+r11            0x7ffff7db3be0      140737351728096
+r12            0x5555555550a0      93824992235680
+r13            0x7fffffffe0c0      140737488347328
+r14            0x0                 0
+r15            0x0                 0
+rip            0x555555555198      0x555555555198 <main()+15>
+eflags         0x202               [ IF ]
+cs             0x33                51
+ss             0x2b                43
+ds             0x0                 0
+es             0x0                 0
+fs             0x0                 0
+gs             0x0                 0
+
+rax            0x55555556aeb0      93824992325296
+rbx            0x55555556aeb0      93824992325296
+rcx            0x55555556aec0      93824992325312
+rdx            0x21                33
+rsi            0x0                 0
+rdi            0x55555556aeb0      93824992325296
+rbp            0x7fffffffdfd0      0x7fffffffdfd0
+rsp            0x7fffffffdfb0      0x7fffffffdfb0
+r8             0x55555556aeb0      93824992325296
+r9             0x7ffff7fe0d50      140737354009936
+r10            0x7ffff7db3be0      140737351728096
+r11            0x7ffff7db3be0      140737351728096
+r12            0x5555555550a0      93824992235680
+r13            0x7fffffffe0c0      140737488347328
+r14            0x0                 0
+r15            0x0                 0
+rip            0x5555555551b1      0x5555555551b1 <main()+40>
+eflags         0x202               [ IF ]
+cs             0x33                51
+ss             0x2b                43
+ds             0x0                 0
+es             0x0                 0
+fs             0x0                 0
+gs             0x0                 0
+
+rax            0x55555556aeb0      93824992325296
+rbx            0x55555556aeb0      93824992325296
+rcx            0x55555556aec0      93824992325312
+rdx            0x5                 5
+rsi            0x5                 5
+rdi            0x55555556aeb0      93824992325296
+rbp            0x7fffffffdfd0      0x7fffffffdfd0
+rsp            0x7fffffffdfb0      0x7fffffffdfb0
+r8             0x55555556aeb0      93824992325296
+r9             0x7ffff7fe0d50      140737354009936
+r10            0x7ffff7db3be0      140737351728096
+r11            0x7ffff7db3be0      140737351728096
+r12            0x5555555550a0      93824992235680
+r13            0x7fffffffe0c0      140737488347328
+r14            0x0                 0
+r15            0x0                 0
+rip            0x5555555551c2      0x5555555551c2 <main()+57>
+eflags         0x202               [ IF ]
+cs             0x33                51
+ss             0x2b                43
+ds             0x0                 0
+es             0x0                 0
+fs             0x0                 0
+gs             0x0                 0
+
+rax            0x55555556aed0      93824992325328
+rbx            0x55555556aed0      93824992325328
+rcx            0x55555556aee0      93824992325344
+rdx            0x21                33
+rsi            0x0                 0
+rdi            0x55555556aed0      93824992325328
+rbp            0x7fffffffdfd0      0x7fffffffdfd0
+rsp            0x7fffffffdfb0      0x7fffffffdfb0
+r8             0x55555556aed0      93824992325328
+r9             0x7ffff7fe0d50      140737354009936
+r10            0x7ffff7db3be0      140737351728096
+r11            0x7ffff7db3be0      140737351728096
+r12            0x5555555550a0      93824992235680
+r13            0x7fffffffe0c0      140737488347328
+r14            0x0                 0
+r15            0x0                 0
+rip            0x5555555551db      0x5555555551db <main()+82>
+eflags         0x202               [ IF ]
+cs             0x33                51
+ss             0x2b                43
+ds             0x0                 0
+es             0x0                 0
+fs             0x0                 0
+gs             0x0                 0
+
+rax            0x55555556aed0      93824992325328
+rbx            0x55555556aed0      93824992325328
+rcx            0x55555556aee0      93824992325344
+rdx            0x1                 1
+rsi            0x0                 0
+rdi            0x55555556aeb0      93824992325296
+rbp            0x7fffffffdfd0      0x7fffffffdfd0
+rsp            0x7fffffffdfb0      0x7fffffffdfb0
+r8             0x55555556aed0      93824992325328
+r9             0x7ffff7fe0d50      140737354009936
+r10            0x7ffff7db3be0      140737351728096
+r11            0x7ffff7db3be0      140737351728096
+r12            0x5555555550a0      93824992235680
+r13            0x7fffffffe0c0      140737488347328
+r14            0x0                 0
+r15            0x0                 0
+rip            0x5555555551ee      0x5555555551ee <main()+101>
+eflags         0x206               [ PF IF ]
+cs             0x33                51
+ss             0x2b                43
+ds             0x0                 0
+es             0x0                 0
+fs             0x0                 0
+gs             0x0                 0
+
+rax            0x0                 0
+rbx            0x55555556aed0      93824992325328
+rcx            0x2                 2
+rdx            0x55555556aeb0      93824992325296
+rsi            0x55555556aed0      93824992325328
+rdi            0x555555559010      93824992251920
+rbp            0x7fffffffdfd0      0x7fffffffdfd0
+rsp            0x7fffffffdfb0      0x7fffffffdfb0
+r8             0x1                 1
+r9             0x7ffff7fe0d50      140737354009936
+r10            0xfffffffffffff04a  -4022
+r11            0x7ffff7c61700      140737350342400
+r12            0x5555555550a0      93824992235680
+r13            0x7fffffffe0c0      140737488347328
+r14            0x0                 0
+r15            0x0                 0
+rip            0x555555555207      0x555555555207 <main()+126>
+eflags         0x206               [ PF IF ]
+cs             0x33                51
+ss             0x2b                43
+ds             0x0                 0
+es             0x0                 0
+fs             0x0                 0
+gs             0x0                 0
+
