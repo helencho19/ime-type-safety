@@ -10,14 +10,15 @@ CPPFLAGS  = -std=c++11 -Wall -Werror -g -O0
 # Set up additional flags for explicitly setting mode
 # https://stackoverflow.com/questions/9262456/how-do-i-disable-gcc-optimization-when-using-makefiles
 # debug:	CPPFLAGS += -g -O0
+ifeq ($(STATIC),1)
+CPPFLAGS += -static
+endif
 
 # The build target 
 # TARGET = myprogram
 
 # all: $(TARGET)
 
-# $(TARGET): $(TARGET).c
-#             $(CC) $(CFLAGS) -o $(TARGET) $(TARGET).c
 node: node.cc
 	$(CC) $(CPPFLAGS) -o node node.cc
 
