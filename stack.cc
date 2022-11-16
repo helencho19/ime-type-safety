@@ -1,5 +1,8 @@
 #include "node.h"
 
+#include <iostream>
+#include <unistd.h>
+
 class Stack {
     Node* head_;
     int size_;
@@ -39,11 +42,21 @@ class Stack {
         }
 };
 
+// The purpose of `foo()` is to verify that ASLR has been disabled.
+int foo(int x) {
+    x *= x;
+    return x;
+}
+
 int main() {
+    pid_t pid = getpid();
+    printf("My PID is %d!\n", pid);
+
     // Create using new/delete
     // TODO: also create local vars on the stack
     Node* n = new Node;
-    n->setVal(5);
+    int nodeVal = foo(4);
+    n->setVal(nodeVal);
     // Create a stack to see if the addr for `new` is different
     Stack* stack = new Stack;
     stack->push(n);
