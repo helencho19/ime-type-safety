@@ -14,10 +14,16 @@ ifeq ($(STATIC),1)
 CPPFLAGS += -static
 endif
 
+ifeq ($(PIE),1)
+CPPFLAGS += -pie -fPIE
+endif
+
 # The build target 
 # TARGET = myprogram
 
 # all: $(TARGET)
+animal: animal.cc
+	$(CC) $(CPPFLAGS) -o animal animal.cc
 
 node: node.cc
 	$(CC) $(CPPFLAGS) -o node node.cc
