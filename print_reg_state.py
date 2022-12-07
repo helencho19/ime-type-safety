@@ -37,7 +37,7 @@ def main(args):
         # I don't know how to detect if this is the last instruction to be executed
         # so let's just wrap it in a try-catch
         try:
-            gdb.execute("n", True, False)
+            gdb.execute("si", True, False)
         except:
             break
     f.close()
