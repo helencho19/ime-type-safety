@@ -1,59 +1,65 @@
 #include <stdio.h>
 
-class Animal {
+class Animal
+{
     double pos_;
     double hp_;
 
 public:
-    Animal() {
+    Animal()
+    {
         pos_ = 0;
         hp_ = 100;
     }
 
     ~Animal() {}
 
-    void move(double dist) {
+    void move(double dist)
+    {
         pos_ += dist;
     }
 
-    double getPosition() {
+    double getPosition()
+    {
         return pos_;
     }
 
-    double getHP() {
+    double getHP()
+    {
         return hp_;
     }
 
-    void eat(Animal *prey) {
-
+    void eat(Animal *prey)
+    {
+        // hp_ += prey->getHP();
     }
 };
 
-class Shape {
+class Shape
+{
 public:
-    Shape() {}
+    Shape()
+    {
+    }
 
     ~Shape() {}
 };
 
-int main() {
-    // Case 1: An object invokes a method not contained in its class
+int main()
+{
+
+    // Case 1: an object invokes a method not contained in its class
     // (after an unsafe type cast)
-    Animal *fakeAnimal = (Animal *) new Shape;
+    Animal *fakeAnimal = (Animal *)new Shape;
     fakeAnimal->move(5.0);
     double fakeAnimalPos = fakeAnimal->getPosition();
-    printf("Fake animal position: %f\n", fakeAnimalPos);
+    fakeAnimalPos++;
+    // printf("Fake animal position: %f\n", fakeAnimalPos);
     delete fakeAnimal;
 
-    // Case 2: Passing in an object of the incorrect type
+    // Case 2: passing in an object of the incorrect type
     // (after an unsafe type cast)
     Animal *realAnimal = new Animal;
     Shape *realShape = new Shape;
     realAnimal->eat((Animal *)realShape);
-    printf("Real animal HP: %f\n", realAnimal->getHP());
-    delete realShape;
-    delete realAnimal;
-
-    // TODO: Type confusion with objects inherited from the same base class
-    // (This will probably require making new header files)
 }
