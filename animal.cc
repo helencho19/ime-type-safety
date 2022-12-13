@@ -1,65 +1,31 @@
 #include <stdio.h>
 
-class Animal
+#include "animal.hpp"
+
+Animal::Animal()
 {
-    double pos_;
-    double hp_;
+    pos_ = 0;
+    hp_ = 100;
+}
 
-public:
-    Animal()
-    {
-        pos_ = 0;
-        hp_ = 100;
-    }
+Animal::~Animal() {}
 
-    ~Animal() {}
-
-    void move(double dist)
-    {
-        pos_ += dist;
-    }
-
-    double getPosition()
-    {
-        return pos_;
-    }
-
-    double getHP()
-    {
-        return hp_;
-    }
-
-    void eat(Animal *prey)
-    {
-        // hp_ += prey->getHP();
-    }
-};
-
-class Shape
+void Animal::move(double dist)
 {
-public:
-    Shape()
-    {
-    }
+    pos_ += dist;
+}
 
-    ~Shape() {}
-};
-
-int main()
+double Animal::getPosition()
 {
+    return pos_;
+}
 
-    // Case 1: an object invokes a method not contained in its class
-    // (after an unsafe type cast)
-    Animal *fakeAnimal = (Animal *)new Shape;
-    fakeAnimal->move(5.0);
-    double fakeAnimalPos = fakeAnimal->getPosition();
-    fakeAnimalPos++;
-    // printf("Fake animal position: %f\n", fakeAnimalPos);
-    delete fakeAnimal;
+double Animal::getHP()
+{
+    return hp_;
+}
 
-    // Case 2: passing in an object of the incorrect type
-    // (after an unsafe type cast)
-    Animal *realAnimal = new Animal;
-    Shape *realShape = new Shape;
-    realAnimal->eat((Animal *)realShape);
+void Animal::eat(Animal *prey)
+{
+    // hp_ += prey->getHP();
 }

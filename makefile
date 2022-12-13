@@ -22,8 +22,15 @@ endif
 # TARGET = myprogram
 
 # all: $(TARGET)
-animal: animal.cc
-	$(CC) $(CPPFLAGS) -o animal animal.cc
+type-confusion: type-confusion.o animal.o shape.o
+	$(CC) $(CPPFLAGS) -o type-confusion type-confusion.o animal.o shape.o
+
+type-confusion.o: type-confusion.cc animal.hpp shape.hpp
+	$(CC) $(CPPFLAGS) -c type-confusion.cc 
+
+animal.o: animal.hpp
+
+shape.o: shape.hpp
 
 node: node.cc
 	$(CC) $(CPPFLAGS) -o node node.cc
