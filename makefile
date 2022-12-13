@@ -22,11 +22,11 @@ endif
 # TARGET = myprogram
 
 # all: $(TARGET)
-type-confusion: type-confusion.o animal.o shape.o
-	$(CC) $(CPPFLAGS) -o type-confusion type-confusion.o animal.o shape.o
+confused-target: $(CONFUSED_TARGET).o animal.o shape.o
+	$(CC) $(CPPFLAGS) -o $(CONFUSED_TARGET) $(CONFUSED_TARGET).o animal.o shape.o
 
-type-confusion.o: type-confusion.cc animal.hpp shape.hpp
-	$(CC) $(CPPFLAGS) -c type-confusion.cc 
+$(CONFUSED_TARGET).o: $(CONFUSED_TARGET).cc animal.hpp shape.hpp
+	$(CC) $(CPPFLAGS) -c $(CONFUSED_TARGET).cc
 
 animal.o: animal.hpp
 

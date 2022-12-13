@@ -19,4 +19,6 @@ int main()
     Animal *realAnimal = new Animal;
     Shape *realShape = new Shape;
     realAnimal->eat((Animal *)realShape);
+
+    // Case 3: Unsafe static_cast
 }
