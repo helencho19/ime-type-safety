@@ -26,3 +26,17 @@ void Square::setDims(size_t w, size_t h) {
 size_t Square::getArea() {
     return width_ * height_;
 }
+
+void Circle::setRadius(double radius) {
+    if (radius >= 0) {
+        radius_ = radius;
+    }
+}
+
+double Circle::getArea() {
+    return radius_ * radius_ * 3.14;
+}
+
+bool Circle::hasSameArea(Circle *c) {
+    return (c->radius_ == this->radius_);
+}

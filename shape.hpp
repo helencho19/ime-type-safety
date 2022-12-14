@@ -25,3 +25,16 @@ public:
 
     size_t getArea(); 
 };
+
+class Circle : public Shape
+{
+protected:
+    double radius_;
+
+public:
+    void setRadius(double radius);
+
+    double getArea();
+
+    bool hasSameArea(Circle *c);
+};
