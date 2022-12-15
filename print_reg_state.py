@@ -1,15 +1,6 @@
 import gdb
 import argparse
 
-# class RegState(gdb.Command):
-#     """Prints values of general-purpose registers"""
-
-#     def __init__(self):
-#         super(RegState, self).__init__("regstate", gdb.COMMAND_USER)
-    
-#     def invoke(self, args, from_tty):
-#         print("args: ")
-
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -28,8 +19,8 @@ def main(args):
     gdb.execute("r", True, False)
 
     # Run the program step by step until it is done
-    #   at each step, print register state using "info registers general"
-    #   redirect output to python string and then print that out to a log file?
+    #   At each step, print register state using "info registers general"
+    #   Redirect output to python string and write the string to a log file.
     # Thread is valid if it has not yet exited or if the inferior has not been deleted
     while not gdb.selected_inferior().threads()[0].is_exited():
         register_state = gdb.execute("info registers general", True, True)

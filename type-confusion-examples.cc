@@ -3,8 +3,6 @@
 #include "animal.hpp"
 #include "shape.hpp"
 
-// THIS IS FOR THE REPORT
-
 int main()
 {
     // Case 1a: an object invokes a method not contained in its class
